@@ -1,1 +1,39 @@
 {
+  "name": "react_pratice",
+  "version": "1.0.0",
+  "description": "This is for react pratice",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest",
+    "start" : "parcel index.html",
+    "build" : "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sachinsoumya/React_Pratice.git"
+  },
+  "keywords": [
+    "react",
+    "node",
+    "sachin"
+  ],
+  "author": "Soumya Sachin Panda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sachinsoumya/React_Pratice/issues"
+  },
+  "homepage": "https://github.com/sachinsoumya/React_Pratice#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  
+  "BrowserList" : [
+    "last 2 Chrome versions" ,
+    "last 2 Firefox versions"
+  ]
+}
