@@ -5,8 +5,8 @@
   "main": "App.js",
   "scripts": {
     "test": "jest",
-    "start" : "parcel index.html",
-    "build" : "parcel build index.html"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -29,11 +29,11 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3"
   },
-  
-  "BrowserList" : [
-    "last 2 Chrome versions" ,
+  "BrowserList": [
+    "last 2 Chrome versions",
     "last 2 Firefox versions"
   ]
 }

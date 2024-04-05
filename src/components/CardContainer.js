@@ -1,6 +1,7 @@
 import MenuCard from "./MenuCard";
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 console.log("Hello module");
 
@@ -87,7 +88,7 @@ const CardContainer = () => {
         <MenuCard prodData = {data[5]}/>  console.log(searchResult.length) */}
 
         {filterItems.map((prod, index) => {
-          return <MenuCard prodData={prod} key={prod.id} />;
+          return <Link to={"/product/"+prod.id} key={prod.id}><MenuCard prodData={prod}  /></Link>;
         })}
       </div>
     </>

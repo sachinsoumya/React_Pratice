@@ -1,3 +1,56 @@
-#heading{
-    color:blue;
+#heading {
+  color: blue;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+}
+.doFlex {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.nav-items {
+    width: 500px;
+}
+
+.nav-items > ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+.doFlex {
+  display: flex;
+}
+.bdy{
+  padding-top: 50px;
+  margin: auto;
+}
+
+.card-container{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin:10px 0px;
+
+
+}
+button {
+  margin: 0 10px;
+}
+.menu-card{
+  width:250px;
+  height:350px;
+  border:1px solid black;
+  color:black
+
+}
+.product{
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  background-color: beige;
+ 
+ 
 }
