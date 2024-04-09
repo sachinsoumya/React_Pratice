@@ -11,6 +11,7 @@ const Team = (props) => {
       <h2>Second Count : {SecondCount}</h2>
       <h2>Designation:Developer</h2>
       <h3>Social Media : {props.social}</h3>
+      <button onClick={()=> setFirstCount(FirstCount+1 )}>Increase Count</button>
       
     </div>
   );
