@@ -1,24 +1,29 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useProd from "../utils/useProd";
 const ProdDetails = () => {
-  const [prodDetails, setProdDetails] = useState("");
+  // const [prodDetails, setProdDetails] = useState("");
   const p = useParams();
   const { prodId } = p;
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const prodDetails = useProd(prodId);
 
-  const fetchData = async () => {
-    const data = await fetch(`https://fakestoreapi.com/products/${prodId}`);
-    const json = await data.json();
+  console.log("data coming from hook");
 
-    console.log(data);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-    console.log(json);
+  // const fetchData = async () => {
+  //   const data = await fetch(`https://fakestoreapi.com/products/${prodId}`);
+  //   const json = await data.json();
 
-    setProdDetails(json);
-  };
+  //   console.log(data);
+
+  //   console.log(json);
+
+  //   setProdDetails(json);
+  // };
 
   return prodDetails ? (
     <div>

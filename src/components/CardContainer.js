@@ -1,4 +1,5 @@
 import MenuCard from "./MenuCard";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -22,7 +23,7 @@ const CardContainer = () => {
   const [filterItems, setFilterItems] = useState([]);
 
   useEffect(() => {
-    console.log("Hello useEffect");
+    // console.log("Hello useEffect");
     fetchData();
   }, []);
 
@@ -46,6 +47,18 @@ const CardContainer = () => {
   //      <h1>Loading ....</h1>
   //   </div>
   // }
+
+  const onlineStatus  = useOnlineStatus();
+
+  console.log(onlineStatus + "rendering");
+
+  if(onlineStatus===false) {
+    return (
+       <div>
+        <h1>Sorry...it seeams you are offline !</h1>
+       </div>
+    )
+  }
 
   return product.length === 0 ? (
     <div>
@@ -99,6 +112,6 @@ const CardContainer = () => {
   );
 };
 
-console.log("Hello module");
+// console.log("Hello module");
 
 export default CardContainer;

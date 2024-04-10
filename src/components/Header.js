@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
 import { LOGO } from "../utils/constant";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus"
 const Header = () => {
   let btn = "Login"
 
   const [btnName , setBtnName] = useState(btn);
 
+  const onlineStatus = useOnlineStatus();
+
+  console.log(onlineStatus);
+
 
 
   useEffect(()=>{
 
-    console.log("Callback inside useEffect is called");
+    // console.log("Callback inside useEffect is called");
 
   } , []) ;
 
@@ -27,6 +32,7 @@ const Header = () => {
   
           <div className="nav-items">
             <ul>
+              <li>{onlineStatus? "✅" : "🔴"}</li>
               <li><Link to="/">Home</Link></li>
               <li><Link to ="/contact">Contact</Link></li>
               <li><Link to="/about">About</Link></li>
