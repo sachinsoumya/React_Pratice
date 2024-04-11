@@ -25,7 +25,7 @@
      *links 
  */
 
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "../index.css";
 import Header from "./components/Header";
@@ -37,6 +37,8 @@ import ProdDetails from "./components/ProdDetails";
 import { Error } from "./components/Error";
 import { Footer } from "./components/Footer";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+// import Grocery from "./components/Grocerry";
+import { lazy } from "react";
 
 // import Contact from "./components/Contact";
 // import About from "./components/About";
@@ -51,6 +53,10 @@ const AppParent = () => {
     </div>
   );
 };
+
+const Grocery = lazy(() => import("./components/Grocerry"));
+
+// const About = lazy(()=> import("./components/About"));
 
 const appRouter = createBrowserRouter([
   {
@@ -91,6 +97,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/product/:prodId",
         element: <ProdDetails />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h1>Loding....</h1>}>
+            <Grocery />
+          </Suspense>
+        ),
       },
     ],
 

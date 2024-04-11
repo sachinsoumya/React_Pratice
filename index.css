@@ -1,4 +1,10 @@
-#heading {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* #heading {
   color: blue;
 }
 
@@ -53,4 +59,4 @@ button {
   background-color: beige;
  
  
-}
+} */

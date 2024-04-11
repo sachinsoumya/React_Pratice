@@ -6,8 +6,8 @@ const MenuCard = (xyz) => {
     const { title, price, category, image, rating } = prodData;
   
     return (
-      <div className="menu-card">
-        <img src={image} alt="prod_1" className="product" />
+      <div className="w-60 h-96">
+        <img src={image} alt="prod_1" className="w-2/4 h-2/4" />
         <h4>{title}</h4>
         <h4>{price}</h4>
   
