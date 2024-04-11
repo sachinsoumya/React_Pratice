@@ -91,7 +91,7 @@ const CardContainer = () => {
       >
         Search
       </button>
-      <div className="grid lg:grid-cols-4 gap-4 px-2 justify-items-center md:grid-cols-3 sm:grid-cols-1">
+      <div className="grid lg:grid-cols-4 gap-4 px-2 justify-items-center md:grid-cols-3 sm:grid-cols-1 my-3">
 
         {/* <MenuCard prodData = {data[0]} />
         <MenuCard prodData = {data[1]} />
