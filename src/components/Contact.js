@@ -1,5 +1,12 @@
 import { useEffect } from "react";
+import Team from "./Team";
 const Contact = ()=>{
+
+    const person = {
+        name:"Sachin"
+    }
+
+    const arr = [1,2,3,5]
     
     useEffect(()=>{
         console.log("hello contact");
@@ -18,6 +25,7 @@ const Contact = ()=>{
     return (
         <div> 
             <h1>Contact us</h1>
+            <Team  {...person}  />
         </div>
 
     )

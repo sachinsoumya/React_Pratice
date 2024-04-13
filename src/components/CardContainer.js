@@ -1,4 +1,4 @@
-import MenuCard from "./MenuCard";
+import MenuCard, { AddedTrending } from "./MenuCard";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 import { useEffect, useState } from "react";
@@ -21,6 +21,9 @@ const CardContainer = () => {
   const [value, setValue] = useState("");
 
   const [filterItems, setFilterItems] = useState([]);
+
+  const TrendingMenuCard = AddedTrending(MenuCard);
+  console.log(TrendingMenuCard());
 
   useEffect(() => {
     // console.log("Hello useEffect");
@@ -48,51 +51,66 @@ const CardContainer = () => {
   //   </div>
   // }
 
-  const onlineStatus  = useOnlineStatus();
+  const onlineStatus = useOnlineStatus();
 
   console.log(onlineStatus + "rendering");
 
-  if(onlineStatus===false) {
+  if (onlineStatus === false) {
     return (
-       <div>
+      <div>
         <h1>Sorry...it seeams you are offline !</h1>
-       </div>
-    )
+      </div>
+    );
   }
 
   return product.length === 0 ? (
     <div>
       <h1>Loading...</h1>
     </div>
-  ) : filterItems.length !==0 ? (
+  ) : filterItems.length !== 0 ? (
     <>
-     
       {" "}
       {/* <input type="text" placeholder="search" name="search" /> */}
-     
-      <button
-        onClick={() => {
-          const filteredProd = filterItems.filter((prod) => prod.rating.rate > 4);
-          setFilterItems(filteredProd);
-        }}
-      >
-        Filter-out
-      </button>
-      <input type="text" value={value} onChange={(e)=>{setValue(e.target.value); console.log(e.target.value)}}/>
-      
-      {/* <div>{console.log(document.querySelector('input').value)}</div> */}
-      <button
-        onClick={() => {
-          const searchResult = product.filter((prod) =>
-            prod.title.toLowerCase().includes(value)
-          );
-          value !=="" ? searchResult.length ?setFilterItems(searchResult):setFilterItems(product): setFilterItems(product);
-        }}
-      >
-        Search
-      </button>
-      <div className="grid lg:grid-cols-4 gap-4 px-2 justify-items-center md:grid-cols-3 sm:grid-cols-1 my-3">
+      <div className="flex sm:justify-center lg:justify-start  p-4 ">
+        <button
+          className="px-3 border border-black bg-yellow-200 text-black  rounded-lg"
+          onClick={() => {
+            const filteredProd = filterItems.filter(
+              (prod) => prod.rating.rate > 4
+            );
+            setFilterItems(filteredProd);
+          }}
+        >
+          Filter-out
+        </button>
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => {
+            setValue(e.target.value);
+            console.log(e.target.value);
+          }}
+          className="border border-slate-600 ml-2 rounded-md"
+        />
 
+        {/* <div>{console.log(document.querySelector('input').value)}</div> */}
+        <button
+          className="border border-black bg-yellow-200 text-black p-1 ml-2 rounded-lg"
+          onClick={() => {
+            const searchResult = product.filter((prod) =>
+              prod.title.toLowerCase().includes(value)
+            );
+            value !== ""
+              ? searchResult.length
+                ? setFilterItems(searchResult)
+                : setFilterItems(product)
+              : setFilterItems(product);
+          }}
+        >
+          Search
+        </button>
+      </div>
+      <div className="grid lg:grid-cols-4 gap-4 px-2 justify-items-center md:grid-cols-3 sm:grid-cols-1 my-3">
         {/* <MenuCard prodData = {data[0]} />
         <MenuCard prodData = {data[1]} />
         <MenuCard  prodData = {data[2]}/>
@@ -101,11 +119,19 @@ const CardContainer = () => {
         <MenuCard prodData = {data[5]}/>  console.log(searchResult.length) */}
 
         {filterItems.map((prod, index) => {
-          return <Link to={"/product/"+prod.id} key={prod.id}><MenuCard prodData={prod}  /></Link>;
+          return prod.rating.rate > 4 ? (
+            <Link to={"/product/" + prod.id} key={prod.id}>
+              <TrendingMenuCard prodData={prod} />
+            </Link>
+          ) : (
+            <Link to={"/product/" + prod.id} key={prod.id}>
+              <MenuCard prodData={prod} />
+            </Link>
+          );
         })}
       </div>
     </>
-  ): (
+  ) : (
     <div>
       <h1>No items found</h1>
     </div>

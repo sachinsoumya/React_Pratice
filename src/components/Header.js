@@ -24,14 +24,14 @@ const Header = () => {
 
     return (
       <div className="header">
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between p-2">
           <img
             src={LOGO}
             alt="amazon_logo"
             className="w-12"
           />
   
-          <div className="w-96">
+          <div className="w-[500px]">
             <ul className="flex justify-between">
               <li>{onlineStatus? "✅" : "🔴"}</li>
               <li><Link to="/">Home</Link></li>

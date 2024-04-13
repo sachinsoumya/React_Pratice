@@ -1,5 +1,5 @@
 const MenuCard = (xyz) => {
-  // console.log(xyz);
+  console.log(xyz);
 
   const { prodData } = xyz;
 
@@ -11,15 +11,27 @@ const MenuCard = (xyz) => {
         <img
           src={image}
           alt="prod_1"
-          className="w-3/4 h-3/4 p-2  border border-transparent  mx-auto"
+          className="w-3/4 h-64 p-2  border border-transparent  mx-auto"
         />
-        <h4>{title}</h4>
-        <h4>{price}</h4>
+        <div className="font-semibold">{title}</div>
+        <h4>Rs.{price}</h4>
 
         <h4>{category}</h4>
         <h4>{rating.rate}</h4>
       </div>
     </div>
   );
+};
+
+export const AddedTrending = (MenuCard) => {
+  return (props) => {
+    return (
+      <div className="border border-red-600">
+        {console.log({ ...props })}
+
+        <MenuCard {...props} />
+      </div>
+    );
+  };
 };
 export default MenuCard;
