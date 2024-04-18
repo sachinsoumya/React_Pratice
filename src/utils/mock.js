@@ -267,4 +267,28 @@ const data = [
     },
   ];
 
+
+  export const contact =  [
+    {
+      name: "Abc",
+      TechStack: ["Java", "Aws", "Spring", "Hyber"],
+    },
+
+    {
+      name: "Pqr",
+      TechStack: ["HTML", "CSS", "JavaScript", "Python"],
+    },
+    {
+      name: "Xyz",
+      TechStack: ["GD", "Java", "Js", "Python"],
+    },
+    {
+      name: "Mno",
+      TechStack: ["Js", "React", "Tailind", "Bootstrap"],
+    },
+    {
+      name: "Ijk",
+      TechStack: ["Django", "AWs", "Azure", "toold"],
+    },
+  ];
   export default data;

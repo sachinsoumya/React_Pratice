@@ -27,6 +27,7 @@ export const AddedTrending = (MenuCard) => {
   return (props) => {
     return (
       <div className="border border-red-600">
+        <label className="absolute bg-black text-white rounded-md p-1">Trending</label>
         {console.log({ ...props })}
 
         <MenuCard {...props} />

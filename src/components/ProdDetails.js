@@ -26,11 +26,16 @@ const ProdDetails = () => {
   // };
 
   return prodDetails ? (
-    <div>
-      <img src={prodDetails.image} alt="product image" />
-      <h3>{prodDetails.title}</h3>
-      <h4>{prodDetails.price}</h4>
-      <h4>{prodDetails.description}</h4>
+    <div className="grid md:grid-cols-2 grid-cols-1 gap-1 ">
+      <div className="w-7/12 h-auto">
+        <img src={prodDetails.image} alt="product image" />
+      </div>
+
+      <div>
+        <div className="font-bold text-xl">{prodDetails.title}</div>
+        <div className="font-bold">Rating - {prodDetails.price}</div>
+        <div className="font-semibold">{prodDetails.description}</div>
+      </div>
     </div>
   ) : (
     <div>Loading...</div>
