@@ -3,6 +3,7 @@ import { LOGO } from "../utils/constant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus"
 import UserData from "../utils/UserContext";
+import CartValue from "../utils/CartContext";
 const Header = () => {
   let btn = "Login"
 
@@ -11,6 +12,10 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   const {loggedinUser} = useContext(UserData);
+
+  const { cart, setProdCart } = useContext(CartValue);
+
+  console.log(cart);
 
   // console.log(loggedinUser);
 
@@ -45,7 +50,7 @@ const Header = () => {
               <li><Link to ="/contact">Contact</Link></li>
               <li><Link to="/about">About</Link></li>
               <li><Link to="/grocery">Grocery</Link></li>
-              <li>Cart</li>
+              <li>{cart.length} Cart</li>
               <li className="font-bold">{loggedinUser}</li>
               <button onClick={()=>{ btnName==="Login"? setBtnName('Log-out')  : setBtnName('Login')}} className="mx-2.5 my-0 border-solid border-2 border-slate-400 rounded-md p-0.5 bg-slate-300">{btnName}</button>
               

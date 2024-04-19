@@ -40,6 +40,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 // import Grocery from "./components/Grocerry";
 import { lazy } from "react";
 import UserData from "./utils/UserContext";
+import CartValue from "./utils/CartContext";
 
 // import Contact from "./components/Contact";
 // import About from "./components/About";
@@ -47,6 +48,7 @@ import UserData from "./utils/UserContext";
 
 const AppParent = () => {
   const [userName, setUserName] = useState();
+  const [prodCart ,setProdCart] = useState([]);
 
   useEffect(() => {
     //we make an api call for authentication
@@ -60,12 +62,17 @@ const AppParent = () => {
 
   return (
     <div>
-      <UserData.Provider value={{ loggedinUser: userName  , setUserName}}>
+      {/* <UserData.Provider value={{ loggedinUser: userName, setUserName }}>
         <Header />
-      </UserData.Provider>
-      <UserData.Provider value={{ loggedinUser: userName , setUserName}}>
+      </UserData.Provider> */}
+      {/* <UserData.Provider value={{ loggedinUser: userName , setUserName}}>
         <Outlet />
-      </UserData.Provider>
+      </UserData.Provider> */}
+
+      <CartValue.Provider value = {{cart : prodCart , setProdCart}}>
+        <Header />
+        <Outlet />
+      </CartValue.Provider>
       <Footer />
     </div>
   );

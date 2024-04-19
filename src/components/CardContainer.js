@@ -117,7 +117,7 @@ const CardContainer = () => {
 
       <button className="border border-black p-3 mx-2 rounded-sm" onClick={()=>data.setUserName("Ram")}>
 
-        Click here to see magic {console}
+        Click here to see magic 
 
       </button>
 
