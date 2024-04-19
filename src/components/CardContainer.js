@@ -1,8 +1,9 @@
 import MenuCard, { AddedTrending } from "./MenuCard";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState , useContext } from "react";
 import { Link } from "react-router-dom";
+import UserData from "../utils/UserContext";
 
 console.log("Hello module");
 
@@ -24,6 +25,10 @@ const CardContainer = () => {
 
   const TrendingMenuCard = AddedTrending(MenuCard);
   console.log(TrendingMenuCard());
+
+  const data = useContext(UserData);
+
+  console.log(data);
 
   useEffect(() => {
     // console.log("Hello useEffect");
@@ -109,6 +114,13 @@ const CardContainer = () => {
         >
           Search
         </button>
+
+      <button className="border border-black p-3 mx-2 rounded-sm" onClick={()=>data.setUserName("Ram")}>
+
+        Click here to see magic {console}
+
+      </button>
+
       </div>
       <div className="grid lg:grid-cols-4 gap-4 px-2 justify-items-center md:grid-cols-3 sm:grid-cols-1 my-3">
         {/* <MenuCard prodData = {data[0]} />
@@ -121,11 +133,11 @@ const CardContainer = () => {
         {filterItems.map((prod, index) => {
           return prod.rating.rate > 4 ? (
             <Link to={"/product/" + prod.id} key={prod.id}>
-              <TrendingMenuCard prodData={prod} />
+              <TrendingMenuCard prodData={prod}  />
             </Link>
           ) : (
             <Link to={"/product/" + prod.id} key={prod.id}>
-              <MenuCard prodData={prod} />
+              <MenuCard prodData={prod}  />
             </Link>
           );
         })}

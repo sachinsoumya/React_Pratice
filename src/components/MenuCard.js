@@ -1,9 +1,15 @@
-const MenuCard = (xyz) => {
-  console.log(xyz);
+import { useContext } from "react";
+import UserData from "../utils/UserContext";
 
-  const { prodData } = xyz;
+const MenuCard = (xyz) => {
+  // console.log(xyz);
+
+  const { prodData  } = xyz;
 
   const { title, price, category, image, rating } = prodData;
+
+  const data = useContext(UserData);
+  console.log(data);
 
   return (
     <div className="w-60 h-96 shadow-lg ">
@@ -18,6 +24,7 @@ const MenuCard = (xyz) => {
 
         <h4>{category}</h4>
         <h4>{rating.rate}</h4>
+        <h4>{data.loggedinUser}</h4>
       </div>
     </div>
   );
@@ -28,7 +35,7 @@ export const AddedTrending = (MenuCard) => {
     return (
       <div className="border border-red-600">
         <label className="absolute bg-black text-white rounded-md p-1">Trending</label>
-        {console.log({ ...props })}
+        {/* {console.log({ ...props })} */}
 
         <MenuCard {...props} />
       </div>

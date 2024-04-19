@@ -18,7 +18,7 @@ const ProdCategory = ({ name, TechStack, showMember, setShowIndex }) => {
         className="font-bold bg-slate-300 flex justify-between cursor-pointer"
         onClick={handleClick}
       >
-        <span>{name}</span> <span>⬇️ </span>
+        <span>{name}</span> <span>⬇️ </span>+
       </div>
 
       {showMember && TechStack.map((item, index) => {

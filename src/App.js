@@ -25,7 +25,7 @@
      *links 
  */
 
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "../index.css";
 import Header from "./components/Header";
@@ -39,16 +39,33 @@ import { Footer } from "./components/Footer";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 // import Grocery from "./components/Grocerry";
 import { lazy } from "react";
+import UserData from "./utils/UserContext";
 
 // import Contact from "./components/Contact";
 // import About from "./components/About";
 // import { Error } from "./components/Error";
 
 const AppParent = () => {
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    //we make an api call for authentication
+
+    const data = {
+      name: "Sachin",
+    };
+
+    setUserName(data.name);
+  }, []);
+
   return (
     <div>
-      <Header />
-      <Outlet />
+      <UserData.Provider value={{ loggedinUser: userName  , setUserName}}>
+        <Header />
+      </UserData.Provider>
+      <UserData.Provider value={{ loggedinUser: userName , setUserName}}>
+        <Outlet />
+      </UserData.Provider>
       <Footer />
     </div>
   );

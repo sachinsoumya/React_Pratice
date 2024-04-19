@@ -1,24 +1,23 @@
 import { Outlet, Link } from "react-router-dom";
 import Team from "./Team";
 import TeamCls from "./TeamCls";
-import {Component} from "react";
+import { Component } from "react";
 import Other from "./Other";
+import UserData from "../utils/UserContext";
 
 class About extends Component {
- constructor(props){
+  constructor(props) {
+    super(props);
 
-  super(props);
+    console.log("Parent constructor");
+  }
 
-  console.log("Parent constructor")
- }
+  componentDidMount() {
+    console.log("Parent is mounted");
+  }
 
- componentDidMount (){
-
-  console.log("Parent is mounted");
- }
-
-  render (){
-    console.log("Parent render called ")
+  render() {
+    console.log("Parent render called ");
     return (
       <div>
         <h1>This is about page</h1>
@@ -28,12 +27,13 @@ class About extends Component {
         <button>
           <Link to="/about/team">About Team</Link>
         </button>
-  
-        
-  
+
+        <UserData.Consumer>
+          {({ loggedinUser }) => <h1>{loggedinUser} is live</h1>}
+        </UserData.Consumer>
+
         {/* <Team name="S.S. Panda" social="@sachinsoumya" /> */}
-         
-         
+
         <TeamCls name="S.S.Panda-1(Class)" social="@sachinsoumya(Class)" />
         {/* <TeamCls name={"S.S.Panda-2(class)"} />
         <TeamCls name={"S.S.Panda-3(class)"} />
@@ -41,7 +41,6 @@ class About extends Component {
         <Outlet />
       </div>
     );
-
   }
 }
 
@@ -56,11 +55,8 @@ class About extends Component {
 //         <Link to="/about/team">About Team</Link>
 //       </button>
 
-      
-
 //       <Team name="S.S. Panda" social="@sachinsoumya" />
-       
-       
+
 //       <TeamCls name="S.S. Panda(Class)" social="@sachinsoumya(Class)" />
 //       <Outlet />
 //     </div>
