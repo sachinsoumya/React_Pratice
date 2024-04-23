@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useProd from "../utils/useProd";
 import CartValue from "../utils/CartContext";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 const ProdDetails = () => {
   // const [prodDetails, setProdDetails] = useState("");
 
@@ -15,6 +17,10 @@ const ProdDetails = () => {
   console.log(cart);
 
   console.log("data coming from hook");
+
+  const dispatch = useDispatch();
+
+  console.log(dispatch);
 
   // useEffect(() => {
   //   fetchData();
@@ -40,6 +46,12 @@ const ProdDetails = () => {
     setProdCart(arr);
   };
 
+  const handleItem = (prod)=>{
+    dispatch(addItem(prod));
+  }
+
+  
+
   return prodDetails ? (
     <div className="grid md:grid-cols-2 grid-cols-1 gap-1 ">
       <div className="w-7/12 h-auto">
@@ -54,8 +66,10 @@ const ProdDetails = () => {
           className="p-2 text-black rounded-md bg-slate-600 font-semibold"
           onClick={() => addCart(prodDetails.title)}
         >
-          Add to cart
+          Add to context cart
         </button>
+
+        <button className="p-2 text-black rounded-md bg-slate-600 font-semibold mx-2" onClick={()=>handleItem(prodDetails)}>Add to redux cart</button>
       </div>
     </div>
   ) : (

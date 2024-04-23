@@ -41,6 +41,8 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { lazy } from "react";
 import UserData from "./utils/UserContext";
 import CartValue from "./utils/CartContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 // import Contact from "./components/Contact";
 // import About from "./components/About";
@@ -64,16 +66,17 @@ const AppParent = () => {
     <div>
       {/* <UserData.Provider value={{ loggedinUser: userName, setUserName }}>
         <Header />
-      </UserData.Provider> */}
-      {/* <UserData.Provider value={{ loggedinUser: userName , setUserName}}>
+      </UserData.Provider>
+      <UserData.Provider value={{ loggedinUser: userName , setUserName}}>
         <Outlet />
       </UserData.Provider> */}
-
+     <Provider store = {appStore} >
       <CartValue.Provider value = {{cart : prodCart , setProdCart}}>
         <Header />
         <Outlet />
       </CartValue.Provider>
       <Footer />
+      </Provider>
     </div>
   );
 };
