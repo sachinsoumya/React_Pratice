@@ -5,6 +5,7 @@ import useOnlineStatus from "../utils/useOnlineStatus"
 import UserData from "../utils/UserContext";
 import CartValue from "../utils/CartContext";
 import { useSelector } from "react-redux";
+
 const Header = () => {
   let btn = "Login"
 
@@ -19,6 +20,8 @@ const Header = () => {
   console.log(cart);
 
   const cartItems = useSelector((store)=>store.cart.items);
+
+ 
 
   console.log(cartItems);
 

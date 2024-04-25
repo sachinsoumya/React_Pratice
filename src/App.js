@@ -43,6 +43,7 @@ import UserData from "./utils/UserContext";
 import CartValue from "./utils/CartContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Demo from "./components/Demo";
 
 // import Contact from "./components/Contact";
 // import About from "./components/About";
@@ -50,7 +51,7 @@ import appStore from "./utils/appStore";
 
 const AppParent = () => {
   const [userName, setUserName] = useState();
-  const [prodCart ,setProdCart] = useState([]);
+  const [prodCart, setProdCart] = useState([]);
 
   useEffect(() => {
     //we make an api call for authentication
@@ -70,12 +71,13 @@ const AppParent = () => {
       <UserData.Provider value={{ loggedinUser: userName , setUserName}}>
         <Outlet />
       </UserData.Provider> */}
-     <Provider store = {appStore} >
-      <CartValue.Provider value = {{cart : prodCart , setProdCart}}>
-        <Header />
-        <Outlet />
-      </CartValue.Provider>
-      <Footer />
+
+      <Provider store={appStore}>
+        <CartValue.Provider value={{ cart: prodCart, setProdCart }}>
+          <Header />
+          <Outlet />
+        </CartValue.Provider>
+        <Footer />
       </Provider>
     </div>
   );
@@ -114,6 +116,8 @@ const appRouter = createBrowserRouter([
               </div>
             ),
           },
+
+         
         ],
       },
       {
@@ -133,6 +137,10 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path:"/demo",
+        element:<Demo />
+      }
     ],
 
     errorElement: <Error />,
